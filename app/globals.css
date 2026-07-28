@@ -1,0 +1,403 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f4efe8;
+  --foreground: #142033;
+  --muted: #5c667a;
+  --card: rgba(255, 255, 255, 0.72);
+  --card-border: rgba(20, 32, 51, 0.08);
+  --accent: #0f766e;
+  --accent-2: #f97316;
+  --shadow: 0 28px 80px rgba(20, 32, 51, 0.12);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), sans-serif;
+  background:
+    radial-gradient(circle at top left, rgba(15, 118, 110, 0.16), transparent 24%),
+    radial-gradient(circle at top right, rgba(249, 115, 22, 0.16), transparent 24%),
+    linear-gradient(180deg, #fffaf3 0%, #f4efe8 48%, #f1ebe1 100%);
+}
+
+button {
+  font: inherit;
+}
+
+.trainer-shell {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 32px 0 64px;
+}
+
+.hero-grid,
+.split-layout {
+  display: grid;
+  gap: 24px;
+}
+
+.hero-grid {
+  grid-template-columns: 1.05fr 0.95fr;
+  align-items: stretch;
+  padding-top: 24px;
+}
+
+.hero-copy,
+.dashboard-card,
+.info-card,
+.quest-card,
+.flashcard,
+.explanation-card {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  backdrop-filter: blur(18px);
+  box-shadow: var(--shadow);
+}
+
+.hero-copy {
+  border-radius: 36px;
+  padding: 40px;
+}
+
+.eyebrow,
+.card-kicker {
+  display: inline-flex;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.hero-copy h1,
+.section-block h2 {
+  margin: 14px 0 0;
+  line-height: 0.96;
+  letter-spacing: -0.05em;
+}
+
+.hero-copy h1 {
+  font-size: clamp(3rem, 8vw, 6.4rem);
+  max-width: 10ch;
+}
+
+.lead,
+.section-head p,
+.supporting,
+.quest-card p,
+.info-card p,
+.flashcard p,
+.explanation-card li {
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.lead {
+  max-width: 60ch;
+  font-size: 1.1rem;
+  margin: 18px 0 0;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 28px;
+}
+
+.primary-btn,
+.secondary-btn {
+  border: 0;
+  border-radius: 999px;
+  padding: 14px 22px;
+  cursor: pointer;
+  transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+}
+
+.primary-btn {
+  color: white;
+  background: linear-gradient(135deg, #0f766e, #115e59);
+  box-shadow: 0 18px 34px rgba(15, 118, 110, 0.28);
+}
+
+.secondary-btn {
+  color: var(--foreground);
+  background: rgba(255, 255, 255, 0.68);
+  border: 1px solid rgba(20, 32, 51, 0.08);
+}
+
+.primary-btn:hover,
+.secondary-btn:hover,
+.quest-card:hover,
+.info-card:hover {
+  transform: translateY(-2px);
+}
+
+.hero-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.hero-metrics div {
+  padding: 16px;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.62);
+  border: 1px solid rgba(20, 32, 51, 0.06);
+}
+
+.hero-metrics strong,
+.info-score,
+.overthinking strong {
+  display: block;
+  font-size: 1.6rem;
+}
+
+.hero-metrics span {
+  display: block;
+  color: var(--muted);
+  margin-top: 6px;
+}
+
+.dashboard-card {
+  border-radius: 34px;
+  padding: 28px;
+}
+
+.dashboard-top,
+.quest-card,
+.section-head,
+.split-layout {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.streak-pill {
+  align-self: start;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: rgba(15, 118, 110, 0.1);
+  color: #0f766e;
+}
+
+.streak-pill span,
+.streak-pill strong {
+  display: block;
+}
+
+.heatmap-grid {
+  display: grid;
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.heatmap-cell,
+.card-panel {
+  padding: 16px;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(20, 32, 51, 0.06);
+}
+
+.heatmap-label {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.heatmap-label strong {
+  color: var(--accent);
+}
+
+.bar-track {
+  height: 10px;
+  margin-top: 12px;
+  border-radius: 999px;
+  background: rgba(20, 32, 51, 0.08);
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #f97316, #f59e0b, #0f766e);
+}
+
+.card-panel {
+  margin-top: 16px;
+}
+
+.overthinking {
+  display: flex;
+  align-items: end;
+  gap: 12px;
+}
+
+.overthinking strong {
+  color: var(--foreground);
+}
+
+.section-block {
+  margin-top: 28px;
+  padding: 28px;
+  border-radius: 34px;
+  background: rgba(255, 255, 255, 0.52);
+  border: 1px solid rgba(20, 32, 51, 0.06);
+}
+
+.section-head {
+  align-items: end;
+}
+
+.section-head h2,
+.split-layout h2 {
+  font-size: clamp(2rem, 5vw, 3.3rem);
+  max-width: 12ch;
+}
+
+.diagnostic-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 20px;
+}
+
+.info-card,
+.quest-card,
+.explanation-card {
+  border-radius: 26px;
+  padding: 20px;
+}
+
+.info-score {
+  color: var(--accent-2);
+}
+
+.split-layout {
+  align-items: start;
+}
+
+.split-layout.reverse {
+  grid-template-columns: 0.92fr 1.08fr;
+}
+
+.split-layout:not(.reverse) {
+  grid-template-columns: 1fr 1.2fr;
+}
+
+.quest-list {
+  display: grid;
+  gap: 14px;
+}
+
+.quest-card {
+  align-items: center;
+}
+
+.quest-card span {
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(15, 118, 110, 0.1);
+  color: #0f766e;
+  white-space: nowrap;
+}
+
+.flashcard-stack {
+  position: relative;
+  min-height: 300px;
+}
+
+.flashcard {
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: min(100%, 360px);
+}
+
+.flashcard:nth-child(2) {
+  top: 24px;
+  left: 26px;
+}
+
+.flashcard:nth-child(3) {
+  top: 48px;
+  left: 52px;
+}
+
+.flashcard h3,
+.info-card h3,
+.quest-card h3,
+.explanation-card strong {
+  margin: 8px 0;
+}
+
+.explanation-card ol {
+  margin: 14px 0 0;
+  padding-left: 20px;
+}
+
+.explanation-card li + li {
+  margin-top: 12px;
+}
+
+@media (max-width: 960px) {
+  .hero-grid,
+  .split-layout,
+  .split-layout.reverse,
+  .split-layout:not(.reverse),
+  .section-head,
+  .dashboard-top,
+  .quest-card {
+    grid-template-columns: 1fr;
+    flex-direction: column;
+  }
+
+  .diagnostic-grid,
+  .hero-metrics {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-copy {
+    padding: 28px;
+  }
+
+  .flashcard-stack {
+    min-height: 360px;
+  }
+}
+
+@media (max-width: 640px) {
+  .trainer-shell {
+    width: min(100% - 20px, 1180px);
+    padding-top: 16px;
+  }
+
+  .section-block,
+  .dashboard-card,
+  .hero-copy {
+    border-radius: 28px;
+    padding: 22px;
+  }
+
+  .hero-copy h1 {
+    font-size: clamp(2.7rem, 15vw, 4.2rem);
+  }
+}
