@@ -402,6 +402,22 @@ button {
   font-size: 1.5rem;
 }
 
+.principles-list {
+  display: grid;
+  gap: 14px;
+}
+
+.mini-card {
+  padding: 18px;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(20, 32, 51, 0.06);
+}
+
+.mini-card h3 {
+  margin: 0 0 8px;
+}
+
 .feature-banner p {
   color: var(--muted);
 }
@@ -577,6 +593,10 @@ button {
   .progress-hero,
   .progress-grid {
     grid-template-columns: 1fr;
+  }
+
+  .principles-list {
+    width: 100%;
   }
 
   .diagnostic-header {

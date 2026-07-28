@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { DiagnosticPanel } from "./diagnostic-panel";
+import { onboardingSteps, productPrinciples } from "../lib/product";
 
 const diagnostics = [
   {
@@ -82,6 +83,9 @@ export default function Home() {
         <nav className="site-nav">
           <Link href="#diagnostic">Diagnostic</Link>
           <Link href="#quests">Quests</Link>
+          <Link href="/onboarding">Onboarding</Link>
+          <Link href="/about">About</Link>
+          <Link href="/progress">Progress</Link>
           <Link href="/features">Features</Link>
         </nav>
       </header>
@@ -200,6 +204,44 @@ export default function Home() {
           </p>
         </div>
         <DiagnosticPanel />
+      </section>
+
+      <section className="section-block split-layout">
+        <div>
+          <span className="eyebrow">Product principles</span>
+          <h2>What keeps the product healthy as it grows.</h2>
+        </div>
+        <div className="principles-list">
+          {productPrinciples.map((item) => (
+            <article className="mini-card" key={item.title}>
+              <h3>{item.title}</h3>
+              <p>{item.description}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="section-block">
+        <div className="section-head">
+          <div>
+            <span className="eyebrow">Getting started</span>
+            <h2>Onboarding that teaches the app how to help you.</h2>
+          </div>
+          <Link className="secondary-btn" href="/onboarding">
+            Open onboarding
+          </Link>
+        </div>
+        <div className="timeline">
+          {onboardingSteps.map((item, index) => (
+            <article className="timeline-item" key={item.title}>
+              <span className="timeline-step">0{index + 1}</span>
+              <div>
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+              </div>
+            </article>
+          ))}
+        </div>
       </section>
 
       <section className="section-block split-layout" id="quests">
