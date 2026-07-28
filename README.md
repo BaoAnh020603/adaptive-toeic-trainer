@@ -1,13 +1,21 @@
 # Adaptive TOEIC Trainer
 
-A personalized TOEIC preparation app focused on:
+An original TOEIC preparation app designed around personalized diagnosis,
+weakness-driven practice, and fast review loops.
 
-- diagnostic mode
-- weakness heatmap
-- overthinking index
-- dynamic study quests
-- contextual flashcards
-- 3-tier explanations
+## What it does
+
+- Diagnoses weak points with a short adaptive test
+- Builds study quests from current performance
+- Flags overthinking with time-based signals
+- Reviews vocabulary through contextual flashcards
+- Explains each answer in 3 levels of depth
+
+## Tech
+
+- Next.js
+- React
+- TypeScript
 
 ## Run locally
 
@@ -16,11 +24,12 @@ npm install
 npm run dev
 ```
 
-## Build for Vercel
+## Build
 
 ```bash
 npm run build
 ```
 
-This project is set up as a standard Next.js app, so you can connect the GitHub
-repository to Vercel and deploy it directly.
+## Deploy
+
+Import this GitHub repository into Vercel and deploy the `main` branch.
