@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { DiagnosticPanel } from "./diagnostic-panel";
 
 const diagnostics = [
   {
@@ -98,7 +99,9 @@ export default function Home() {
             and turns every wrong answer into a personalized study path.
           </p>
           <div className="hero-actions">
-            <button className="primary-btn">Start diagnostic mode</button>
+            <a className="primary-btn" href="#interactive-diagnostic">
+              Start diagnostic mode
+            </a>
             <Link className="secondary-btn" href="/features">
               View features
             </Link>
@@ -183,6 +186,20 @@ export default function Home() {
             </article>
           ))}
         </div>
+      </section>
+
+      <section className="section-block" id="interactive-diagnostic">
+        <div className="section-head">
+          <div>
+            <span className="eyebrow">Interactive diagnostic</span>
+            <h2>Tap through a short test and watch the study path adapt.</h2>
+          </div>
+          <p>
+            This is the first live behavior in the product, so the landing page
+            is no longer just a brochure.
+          </p>
+        </div>
+        <DiagnosticPanel />
       </section>
 
       <section className="section-block split-layout" id="quests">

@@ -289,6 +289,75 @@ button {
   margin-top: 16px;
 }
 
+.diagnostic-panel {
+  display: grid;
+  gap: 16px;
+  padding: 22px;
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.74);
+  border: 1px solid rgba(20, 32, 51, 0.08);
+}
+
+.diagnostic-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: start;
+}
+
+.diagnostic-header h3,
+.diagnostic-summary h3 {
+  margin: 8px 0 0;
+  font-size: 1.5rem;
+  letter-spacing: -0.04em;
+}
+
+.diagnostic-track {
+  margin: 0;
+}
+
+.diagnostic-options {
+  display: grid;
+  gap: 10px;
+}
+
+.diagnostic-option {
+  padding: 14px 16px;
+  border-radius: 18px;
+  border: 1px solid rgba(20, 32, 51, 0.1);
+  background: white;
+  color: var(--foreground);
+  text-align: left;
+  cursor: pointer;
+  transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
+}
+
+.diagnostic-option:hover {
+  transform: translateY(-1px);
+}
+
+.diagnostic-option.correct {
+  border-color: rgba(15, 118, 110, 0.45);
+  background: rgba(15, 118, 110, 0.08);
+}
+
+.diagnostic-option.incorrect {
+  border-color: rgba(249, 115, 22, 0.45);
+  background: rgba(249, 115, 22, 0.08);
+}
+
+.diagnostic-feedback {
+  display: grid;
+  gap: 12px;
+  padding: 18px;
+  border-radius: 22px;
+  background: rgba(15, 118, 110, 0.08);
+}
+
+.diagnostic-feedback strong {
+  font-size: 1.1rem;
+}
+
 .overthinking {
   display: flex;
   align-items: end;
@@ -450,6 +519,10 @@ button {
   .site-topbar,
   .feature-grid {
     grid-template-columns: 1fr;
+  }
+
+  .diagnostic-header {
+    flex-direction: column;
   }
 
   .diagnostic-grid,
