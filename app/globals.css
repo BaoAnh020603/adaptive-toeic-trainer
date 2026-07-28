@@ -519,24 +519,23 @@ button {
 }
 
 .flashcard-stack {
-  position: relative;
-  min-height: 300px;
+  display: grid;
+  gap: 14px;
+  align-content: start;
+  min-height: auto;
 }
 
 .flashcard {
-  position: absolute;
-  inset: 0 auto auto 0;
+  position: relative;
   width: min(100%, 360px);
 }
 
 .flashcard:nth-child(2) {
-  top: 24px;
-  left: 26px;
+  margin-left: 18px;
 }
 
 .flashcard:nth-child(3) {
-  top: 48px;
-  left: 52px;
+  margin-left: 36px;
 }
 
 .flashcard h3,
@@ -594,22 +593,13 @@ button {
   }
 
   .flashcard-stack {
-    display: grid;
-    gap: 14px;
-    min-height: 360px;
+    width: 100%;
   }
 
   .flashcard {
-    position: relative;
-    inset: auto;
     width: 100%;
+    margin-left: 0 !important;
     transform: none !important;
-  }
-
-  .flashcard:nth-child(2),
-  .flashcard:nth-child(3) {
-    top: auto;
-    left: auto;
   }
 }
 
