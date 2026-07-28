@@ -227,8 +227,7 @@ button {
 
 .dashboard-top,
 .quest-card,
-.section-head,
-.split-layout {
+.section-head {
   display: flex;
   justify-content: space-between;
   gap: 18px;
@@ -490,6 +489,7 @@ button {
 }
 
 .split-layout {
+  display: grid;
   align-items: start;
 }
 
