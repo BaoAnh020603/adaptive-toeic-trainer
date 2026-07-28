@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 const diagnostics = [
   {
@@ -72,6 +73,18 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <main className="trainer-shell">
+      <header className="site-topbar">
+        <div>
+          <p className="brand-mark">Adaptive TOEIC Trainer</p>
+          <span>Built for personal weak-point recovery.</span>
+        </div>
+        <nav className="site-nav">
+          <Link href="#diagnostic">Diagnostic</Link>
+          <Link href="#quests">Quests</Link>
+          <Link href="/features">Features</Link>
+        </nav>
+      </header>
+
       <section className="hero-grid">
         <div className="hero-copy">
           <span className="eyebrow">Adaptive & focus-driven TOEIC trainer</span>
@@ -86,7 +99,9 @@ export default function Home() {
           </p>
           <div className="hero-actions">
             <button className="primary-btn">Start diagnostic mode</button>
-            <button className="secondary-btn">View personalized dashboard</button>
+            <Link className="secondary-btn" href="/features">
+              View features
+            </Link>
           </div>
           <div className="hero-metrics">
             <div>
@@ -147,7 +162,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section-block">
+      <section className="section-block" id="diagnostic">
         <div className="section-head">
           <div>
             <span className="eyebrow">Diagnostic snapshot</span>
@@ -170,7 +185,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section-block split-layout">
+      <section className="section-block split-layout" id="quests">
         <div>
           <span className="eyebrow">Dynamic quests</span>
           <h2>Replace static sets with missions that match the learner's state.</h2>

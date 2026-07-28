@@ -47,6 +47,42 @@ button {
   padding: 32px 0 64px;
 }
 
+.site-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 18px;
+  padding: 18px 22px;
+  border: 1px solid rgba(20, 32, 51, 0.06);
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.52);
+  backdrop-filter: blur(16px);
+}
+
+.brand-mark {
+  margin: 0;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.site-topbar span {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.site-nav a {
+  color: var(--foreground);
+  text-decoration: none;
+  font-weight: 600;
+}
+
 .hero-grid,
 .split-layout {
   display: grid;
@@ -129,6 +165,13 @@ button {
   padding: 14px 22px;
   cursor: pointer;
   transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+}
+
+.secondary-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
 }
 
 .primary-btn {
@@ -264,6 +307,37 @@ button {
   border: 1px solid rgba(20, 32, 51, 0.06);
 }
 
+.feature-hero,
+.feature-banner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: end;
+  gap: 20px;
+}
+
+.feature-title {
+  margin: 12px 0 0;
+  font-size: clamp(2.4rem, 6vw, 4.5rem);
+  line-height: 0.98;
+  letter-spacing: -0.05em;
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 28px;
+}
+
+.feature-card h2 {
+  margin-top: 10px;
+  font-size: 1.5rem;
+}
+
+.feature-banner p {
+  color: var(--muted);
+}
+
 .section-head {
   align-items: end;
 }
@@ -359,15 +433,23 @@ button {
 }
 
 @media (max-width: 960px) {
+  .site-topbar,
   .hero-grid,
   .split-layout,
   .split-layout.reverse,
   .split-layout:not(.reverse),
   .section-head,
+  .feature-hero,
+  .feature-banner,
   .dashboard-top,
   .quest-card {
     grid-template-columns: 1fr;
     flex-direction: column;
+  }
+
+  .site-topbar,
+  .feature-grid {
+    grid-template-columns: 1fr;
   }
 
   .diagnostic-grid,
@@ -388,6 +470,10 @@ button {
   .trainer-shell {
     width: min(100% - 20px, 1180px);
     padding-top: 16px;
+  }
+
+  .site-topbar {
+    padding: 16px;
   }
 
   .section-block,
