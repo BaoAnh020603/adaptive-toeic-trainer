@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 const questions = [
   {
@@ -29,6 +29,33 @@ export function DiagnosticPanel() {
   const [score, setScore] = useState(0);
   const [complete, setComplete] = useState(false);
 
+  useEffect(() => {
+    const saved = window.localStorage.getItem("adaptive-toeic-diagnostic");
+
+    if (!saved) return;
+
+    try {
+      const parsed = JSON.parse(saved) as {
+        step?: number;
+        score?: number;
+        complete?: boolean;
+      };
+
+      if (typeof parsed.step === "number") setStep(parsed.step);
+      if (typeof parsed.score === "number") setScore(parsed.score);
+      if (typeof parsed.complete === "boolean") setComplete(parsed.complete);
+    } catch {
+      window.localStorage.removeItem("adaptive-toeic-diagnostic");
+    }
+  }, []);
+
+  useEffect(() => {
+    window.localStorage.setItem(
+      "adaptive-toeic-diagnostic",
+      JSON.stringify({ step, score, complete }),
+    );
+  }, [complete, score, step]);
+
   const current = questions[step];
   const progress = useMemo(() => ((step + (complete ? 1 : 0)) / questions.length) * 100, [step, complete]);
 
@@ -53,6 +80,7 @@ export function DiagnosticPanel() {
     setSelected(null);
     setScore(0);
     setComplete(false);
+    window.localStorage.removeItem("adaptive-toeic-diagnostic");
   };
 
   if (complete) {
