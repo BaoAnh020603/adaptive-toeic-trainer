@@ -13,6 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://adaptive-toeic-trainer.vercel.app"),
   title: "Adaptive TOEIC Trainer",
   description:
     "A personalized TOEIC trainer that diagnoses weak spots, detects overthinking, and builds adaptive study quests.",
