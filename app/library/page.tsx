@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { AdaptiveSummary } from "../adaptive-summary";
+import { FlashcardEngine } from "../review-engine";
 import { libraryTopics } from "../../lib/library";
 
 export const metadata: Metadata = {
@@ -45,6 +46,16 @@ export default function LibraryPage() {
           </div>
         </div>
         <AdaptiveSummary />
+      </section>
+
+      <section className="section-block">
+        <div className="section-head">
+          <div>
+            <span className="eyebrow">Flashcard engine</span>
+            <h2>Review vocabulary from sentence gaps, not a flat word list.</h2>
+          </div>
+        </div>
+        <FlashcardEngine />
       </section>
 
       <section className="feature-grid">
