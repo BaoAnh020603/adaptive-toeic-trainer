@@ -38,6 +38,7 @@ export default function FeaturesPage() {
           <Link href="/">Home</Link>
           <Link href="/#diagnostic">Diagnostic</Link>
           <Link href="/#quests">Quests</Link>
+          <Link href="/library">Library</Link>
         </nav>
       </header>
 

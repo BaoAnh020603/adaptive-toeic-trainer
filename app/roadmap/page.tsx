@@ -20,6 +20,7 @@ export default function RoadmapPage() {
           <Link href="/">Home</Link>
           <Link href="/about">About</Link>
           <Link href="/onboarding">Onboarding</Link>
+          <Link href="/library">Library</Link>
         </nav>
       </header>
 

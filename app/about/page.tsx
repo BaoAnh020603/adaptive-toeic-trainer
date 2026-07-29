@@ -20,7 +20,7 @@ export default function AboutPage() {
           <Link href="/">Home</Link>
           <Link href="/progress">Progress</Link>
           <Link href="/onboarding">Onboarding</Link>
-          <Link href="/roadmap">Roadmap</Link>
+          <Link href="/roadmap">Roadmap</Link><Link href="/library">Library</Link>
         </nav>
       </header>
 

@@ -20,6 +20,7 @@ export default function ProgressPage() {
           <Link href="/">Home</Link>
           <Link href="/features">Features</Link>
           <Link href="/#interactive-diagnostic">Diagnostic</Link>
+          <Link href="/library">Library</Link>
         </nav>
       </header>
 

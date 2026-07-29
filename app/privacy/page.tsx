@@ -26,7 +26,7 @@ export default function PrivacyPage() {
           <Link href="/">Home</Link>
           <Link href="/about">About</Link>
           <Link href="/onboarding">Onboarding</Link>
-          <Link href="/terms">Terms</Link>
+          <Link href="/terms">Terms</Link><Link href="/library">Library</Link>
         </nav>
       </header>
 

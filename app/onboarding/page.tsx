@@ -22,6 +22,7 @@ export default function OnboardingPage() {
           <Link href="/about">About</Link>
           <Link href="/privacy">Privacy</Link>
           <Link href="/roadmap">Roadmap</Link>
+          <Link href="/library">Library</Link>
         </nav>
       </header>
 
