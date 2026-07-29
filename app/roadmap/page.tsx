@@ -27,7 +27,9 @@ export default function RoadmapPage() {
       <section className="section-block feature-hero">
         <div>
           <span className="eyebrow">Roadmap</span>
-          <h1 className="feature-title">Designed to evolve from MVP to public launch.</h1>
+          <h1 className="feature-title">
+            Designed to evolve from MVP to public launch.
+          </h1>
         </div>
         <p className="lead">
           The roadmap is intentionally simple so you can keep shipping without

@@ -22,7 +22,8 @@ export default async function AccountPage() {
           <Link href="/">Home</Link>
           <Link href="/progress">Progress</Link>
           <Link href="/privacy">Privacy</Link>
-          <Link href="/roadmap">Roadmap</Link><Link href="/library">Library</Link>
+          <Link href="/roadmap">Roadmap</Link>
+          <Link href="/library">Library</Link>
         </nav>
       </header>
 

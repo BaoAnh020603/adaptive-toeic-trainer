@@ -1,6 +1,11 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import {
+  STUDY_PROFILE_STORAGE_KEY,
+  createStudyProfilePatch,
+  type StudyProfile,
+} from "../lib/study-profile";
 
 const questions = [
   {
@@ -35,11 +40,7 @@ export function DiagnosticPanel() {
     if (!saved) return;
 
     try {
-      const parsed = JSON.parse(saved) as {
-        step?: number;
-        score?: number;
-        complete?: boolean;
-      };
+      const parsed = JSON.parse(saved) as Partial<StudyProfile>;
 
       if (typeof parsed.step === "number") setStep(parsed.step);
       if (typeof parsed.score === "number") setScore(parsed.score);
@@ -51,8 +52,15 @@ export function DiagnosticPanel() {
 
   useEffect(() => {
     window.localStorage.setItem(
-      "adaptive-toeic-diagnostic",
-      JSON.stringify({ step, score, complete }),
+      STUDY_PROFILE_STORAGE_KEY,
+      JSON.stringify(
+        createStudyProfilePatch({
+          step,
+          score,
+          complete,
+          total: questions.length,
+        }),
+      ),
     );
   }, [complete, score, step]);
 
@@ -80,7 +88,7 @@ export function DiagnosticPanel() {
     setSelected(null);
     setScore(0);
     setComplete(false);
-    window.localStorage.removeItem("adaptive-toeic-diagnostic");
+    window.localStorage.removeItem(STUDY_PROFILE_STORAGE_KEY);
   };
 
   if (complete) {

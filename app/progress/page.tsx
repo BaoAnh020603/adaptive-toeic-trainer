@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { learningMilestones, learningStats } from "../../lib/learning";
+import { ProgressSummary } from "../progress-summary";
 
 export const metadata: Metadata = {
   title: "Progress | Adaptive TOEIC Trainer",
@@ -63,6 +64,16 @@ export default function ProgressPage() {
             </article>
           ))}
         </div>
+      </section>
+
+      <section className="section-block">
+        <div className="section-head">
+          <div>
+            <span className="eyebrow">Saved state</span>
+            <h2>The app now remembers a real study profile.</h2>
+          </div>
+        </div>
+        <ProgressSummary />
       </section>
     </main>
   );
