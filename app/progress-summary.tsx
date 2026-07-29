@@ -11,6 +11,17 @@ function getIntensity(label: string, weakAreas: string[]) {
   return weakAreas.includes(label) ? 86 : 24;
 }
 
+function formatDate(value: string) {
+  try {
+    return new Date(value).toLocaleDateString(undefined, {
+      month: "short",
+      day: "numeric",
+    });
+  } catch {
+    return value;
+  }
+}
+
 export function ProgressSummary() {
   const [profile, setProfile] = useState<StudyProfile>(defaultStudyProfile);
 
@@ -43,6 +54,8 @@ export function ProgressSummary() {
     "vocabulary",
   ];
 
+  const recentSessions = profile.sessions.slice(0, 3);
+
   return (
     <div className="diagnostic-panel">
       <div className="diagnostic-summary">
@@ -54,7 +67,7 @@ export function ProgressSummary() {
         </h3>
         <p>
           Score {profile.score}/{profile.total} · Current step {profile.step + 1} ·
-          Overthinking index {overthinkingIndex}/100
+          Streak {profile.streak} · Overthinking index {overthinkingIndex}/100
         </p>
       </div>
 
@@ -87,6 +100,32 @@ export function ProgressSummary() {
             </div>
           ))}
         </div>
+      </div>
+
+      <div className="mini-card">
+        <h3>Recent sessions</h3>
+        {recentSessions.length ? (
+          <div className="timeline compact">
+            {recentSessions.map((session) => (
+              <article className="timeline-item" key={session.date}>
+                <span className="timeline-step">{formatDate(session.date)}</span>
+                <div>
+                  <h3>
+                    {session.score}/{session.total} correct
+                  </h3>
+                  <p>
+                    Slow hits {session.slowHits} · Misses {session.missedCount} ·
+                    Weak areas {session.weakAreas.join(", ")}
+                  </p>
+                </div>
+              </article>
+            ))}
+          </div>
+        ) : (
+          <p className="supporting">
+            Finish one diagnostic to see your recent learning history here.
+          </p>
+        )}
       </div>
 
       <p className="supporting">

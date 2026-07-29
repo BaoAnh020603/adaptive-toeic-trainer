@@ -5,6 +5,7 @@ import {
   STUDY_PROFILE_STORAGE_KEY,
   createStudyProfilePatch,
   type StudyProfile,
+  type StudySession,
 } from "../lib/study-profile";
 
 type DiagnosticQuestion = {
@@ -69,6 +70,7 @@ export function DiagnosticPanel() {
   }, []);
 
   useEffect(() => {
+    if (complete) return;
     window.localStorage.setItem(
       STUDY_PROFILE_STORAGE_KEY,
       JSON.stringify(
@@ -86,10 +88,7 @@ export function DiagnosticPanel() {
   }, [complete, missedCount, score, slowHits, step, weakAreas]);
 
   const current = questions[step];
-  const elapsedMs = useMemo(
-    () => Date.now() - startedAt,
-    [startedAt, step, selected],
-  );
+  const elapsedMs = useMemo(() => Date.now() - startedAt, [startedAt, step, selected]);
   const progress = useMemo(
     () => ((step + (complete ? 1 : 0)) / questions.length) * 100,
     [step, complete],
@@ -117,7 +116,40 @@ export function DiagnosticPanel() {
     }
   };
 
+  const saveSession = (finalStepScore: number, finalWeakAreas: string[]) => {
+    const saved = window.localStorage.getItem(STUDY_PROFILE_STORAGE_KEY);
+    const existing = saved ? (JSON.parse(saved) as Partial<StudyProfile>) : {};
+    const priorSessions = Array.isArray(existing.sessions) ? existing.sessions : [];
+    const currentSession: StudySession = {
+      date: new Date().toISOString(),
+      score: finalStepScore,
+      total: questions.length,
+      slowHits,
+      missedCount,
+      weakAreas: finalWeakAreas,
+    };
+
+    window.localStorage.setItem(
+      STUDY_PROFILE_STORAGE_KEY,
+      JSON.stringify(
+        createStudyProfilePatch({
+          step: questions.length - 1,
+          score: finalStepScore,
+          complete: true,
+          total: questions.length,
+          weakAreas: finalWeakAreas,
+          slowHits,
+          missedCount,
+          streak: (typeof existing.streak === "number" ? existing.streak : 0) + 1,
+          sessions: [currentSession, ...priorSessions].slice(0, 6),
+        }),
+      ),
+    );
+  };
+
   const next = () => {
+    const finalWeakAreas = weakAreas.length ? weakAreas : [current.weakArea];
+    const finalScore = score;
     const nextStep = step + 1;
     if (nextStep < questions.length) {
       setStep(nextStep);
@@ -126,6 +158,7 @@ export function DiagnosticPanel() {
       return;
     }
 
+    saveSession(finalScore, finalWeakAreas);
     setComplete(true);
   };
 

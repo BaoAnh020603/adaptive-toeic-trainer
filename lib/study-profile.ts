@@ -6,7 +6,18 @@ export type StudyProfile = {
   weakAreas: string[];
   slowHits: number;
   missedCount: number;
+  streak: number;
+  sessions: StudySession[];
   updatedAt: string;
+};
+
+export type StudySession = {
+  date: string;
+  score: number;
+  total: number;
+  slowHits: number;
+  missedCount: number;
+  weakAreas: string[];
 };
 
 export const STUDY_PROFILE_STORAGE_KEY = "adaptive-toeic-study-profile";
@@ -19,6 +30,8 @@ export const defaultStudyProfile: StudyProfile = {
   weakAreas: ["tenses", "prepositions", "reading detail"],
   slowHits: 0,
   missedCount: 0,
+  streak: 1,
+  sessions: [],
   updatedAt: new Date().toISOString(),
 };
 
