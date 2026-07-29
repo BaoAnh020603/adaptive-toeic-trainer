@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { onboardingSteps, publicRoadmap } from "../../lib/product";
+import { onboardingSteps } from "../../lib/product";
+import { releaseStages } from "../../lib/learning";
 
 export const metadata: Metadata = {
   title: "Onboarding | Adaptive TOEIC Trainer",
@@ -20,6 +21,7 @@ export default function OnboardingPage() {
           <Link href="/">Home</Link>
           <Link href="/about">About</Link>
           <Link href="/privacy">Privacy</Link>
+          <Link href="/roadmap">Roadmap</Link>
         </nav>
       </header>
 
@@ -56,9 +58,9 @@ export default function OnboardingPage() {
           </div>
         </div>
         <div className="feature-grid">
-          {publicRoadmap.map((phase) => (
-            <article className="info-card feature-card" key={phase.phase}>
-              <span className="card-kicker">{phase.phase}</span>
+          {releaseStages.map((phase) => (
+            <article className="info-card feature-card" key={phase.stage}>
+              <span className="card-kicker">{phase.stage}</span>
               <h2>{phase.items[0]}</h2>
               <p>{phase.items.slice(1).join(" · ")}</p>
             </article>

@@ -1,18 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-
-const progressCards = [
-  { label: "Weekly accuracy", value: "84%", note: "Up 9% from last week" },
-  { label: "Weak topics", value: "3", note: "Tenses, prepositions, synonyms" },
-  { label: "Streak", value: "12 days", note: "Keep the habit alive" },
-  { label: "Fast recalls", value: "26", note: "Answers under 10 seconds" },
-];
-
-const timeline = [
-  { title: "Diagnostic complete", detail: "The app found your weak grammar patterns." },
-  { title: "Quest assigned", detail: "You got a targeted 5-minute rescue mission." },
-  { title: "Review scheduled", detail: "Missed items move into spaced repetition." },
-];
+import { learningMilestones, learningStats } from "../../lib/learning";
 
 export const metadata: Metadata = {
   title: "Progress | Adaptive TOEIC Trainer",
@@ -49,7 +37,7 @@ export default function ProgressPage() {
       </section>
 
       <section className="progress-grid">
-        {progressCards.map((card) => (
+        {learningStats.map((card) => (
           <article className="info-card progress-card" key={card.label}>
             <span className="card-kicker">{card.label}</span>
             <h2>{card.value}</h2>
@@ -64,7 +52,7 @@ export default function ProgressPage() {
           <h2>Your adaptive learning timeline.</h2>
         </div>
         <div className="timeline">
-          {timeline.map((item, index) => (
+          {learningMilestones.map((item, index) => (
             <article className="timeline-item" key={item.title}>
               <span className="timeline-step">0{index + 1}</span>
               <div>
