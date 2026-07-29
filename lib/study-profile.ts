@@ -4,6 +4,8 @@ export type StudyProfile = {
   step: number;
   complete: boolean;
   weakAreas: string[];
+  slowHits: number;
+  missedCount: number;
   updatedAt: string;
 };
 
@@ -15,6 +17,8 @@ export const defaultStudyProfile: StudyProfile = {
   step: 0,
   complete: false,
   weakAreas: ["tenses", "prepositions", "reading detail"],
+  slowHits: 0,
+  missedCount: 0,
   updatedAt: new Date().toISOString(),
 };
 

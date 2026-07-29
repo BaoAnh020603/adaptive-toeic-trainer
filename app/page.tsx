@@ -86,7 +86,8 @@ export default function Home() {
           <Link href="/onboarding">Onboarding</Link>
           <Link href="/about">About</Link>
           <Link href="/progress">Progress</Link>
-          <Link href="/features">Features</Link><Link href="/library">Library</Link>
+          <Link href="/features">Features</Link>
+          <Link href="/library">Library</Link>
         </nav>
       </header>
 
