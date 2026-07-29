@@ -17,11 +17,21 @@ export const metadata: Metadata = {
   title: "Adaptive TOEIC Trainer",
   description:
     "A personalized TOEIC trainer that diagnoses weak spots, detects overthinking, and builds adaptive study quests.",
+  applicationName: "Adaptive TOEIC Trainer",
+  keywords: [
+    "TOEIC",
+    "adaptive learning",
+    "study dashboard",
+    "flashcards",
+    "diagnostic practice",
+  ],
   openGraph: {
     title: "Adaptive TOEIC Trainer",
     description:
       "Diagnose weak spots, detect overthinking, and train with personalized quests.",
     type: "website",
+    url: "https://adaptive-toeic-trainer.vercel.app",
+    siteName: "Adaptive TOEIC Trainer",
   },
   twitter: {
     card: "summary_large_image",
