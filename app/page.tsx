@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { AdaptiveSummary } from "./adaptive-summary";
 import { DiagnosticPanel } from "./diagnostic-panel";
 import { onboardingSteps, productPrinciples } from "../lib/product";
 
@@ -306,6 +307,20 @@ export default function Home() {
             </ol>
           </div>
         </div>
+      </section>
+
+      <section className="section-block">
+        <div className="section-head">
+          <div>
+            <span className="eyebrow">Adaptive preview</span>
+            <h2>The homepage now mirrors your actual study state.</h2>
+          </div>
+          <p>
+            The next quest and review queue are derived from the same saved
+            profile used by diagnostic and progress.
+          </p>
+        </div>
+        <AdaptiveSummary />
       </section>
     </main>
   );

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { AdaptiveSummary } from "../adaptive-summary";
 import { libraryTopics } from "../../lib/library";
 
 export const metadata: Metadata = {
@@ -34,6 +35,16 @@ export default function LibraryPage() {
           A public product needs a place where users can browse, understand, and
           revisit the training structure. This page becomes that stable entry point.
         </p>
+      </section>
+
+      <section className="section-block">
+        <div className="section-head">
+          <div>
+            <span className="eyebrow">Adaptive queue</span>
+            <h2>What the user should study next.</h2>
+          </div>
+        </div>
+        <AdaptiveSummary />
       </section>
 
       <section className="feature-grid">

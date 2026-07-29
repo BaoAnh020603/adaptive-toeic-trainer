@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { AdaptiveSummary } from "../adaptive-summary";
 
 const pillars = [
   {
@@ -75,6 +76,16 @@ export default function FeaturesPage() {
           The app combines speed signals, mistake categories, and recall
           confidence to build a study loop that looks and feels uniquely yours.
         </p>
+      </section>
+
+      <section className="section-block">
+        <div className="section-head">
+          <div>
+            <span className="eyebrow">Live adaptive preview</span>
+            <h2>What the user sees after a diagnostic run.</h2>
+          </div>
+        </div>
+        <AdaptiveSummary />
       </section>
     </main>
   );
