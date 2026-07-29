@@ -12,6 +12,13 @@ export type ReviewCard = {
   answer: string;
 };
 
+export type StudyMode = {
+  duration: string;
+  title: string;
+  focus: string;
+  tasks: string[];
+};
+
 export function deriveQuestFromProfile(profile: StudyProfile): AdaptiveQuest {
   const topWeakArea = profile.weakAreas[0] ?? "general review";
 
@@ -60,3 +67,40 @@ export function deriveReviewCards(profile: StudyProfile): ReviewCard[] {
   }));
 }
 
+export function deriveStudyModes(profile: StudyProfile): StudyMode[] {
+  const quest = deriveQuestFromProfile(profile);
+  const primaryWeakArea = profile.weakAreas[0] ?? "mixed review";
+
+  return [
+    {
+      duration: "5 minutes",
+      title: "Quick rescue",
+      focus: quest.title,
+      tasks: [
+        `1 diagnostic question from ${primaryWeakArea}`,
+        "1 contextual flashcard sprint",
+        "1 explanation recap",
+      ],
+    },
+    {
+      duration: "10 minutes",
+      title: "Focus drill",
+      focus: `Recover ${primaryWeakArea} and cut overthinking`,
+      tasks: [
+        "2 targeted grammar questions",
+        "2 speed recalls",
+        "1 mistake review",
+      ],
+    },
+    {
+      duration: "15 minutes",
+      title: "Deep training",
+      focus: "Build consistency across weak areas",
+      tasks: [
+        "Mini diagnostic loop",
+        "Adaptive quest block",
+        "Flashcard review with spaced repetition",
+      ],
+    },
+  ];
+}

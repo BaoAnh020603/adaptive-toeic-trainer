@@ -433,6 +433,13 @@ button {
   gap: 12px;
 }
 
+.mode-list {
+  margin: 14px 0 0;
+  padding-left: 18px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
 .feature-banner p {
   color: var(--muted);
 }

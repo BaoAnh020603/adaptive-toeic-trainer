@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { AdaptiveSummary } from "./adaptive-summary";
 import { DiagnosticPanel } from "./diagnostic-panel";
+import { StudyModes } from "./study-modes";
 import { onboardingSteps, productPrinciples } from "../lib/product";
 
 const diagnostics = [
@@ -263,6 +264,20 @@ export default function Home() {
             </article>
           ))}
         </div>
+      </section>
+
+      <section className="section-block">
+        <div className="section-head">
+          <div>
+            <span className="eyebrow">Study modes</span>
+            <h2>Choose a 5, 10, or 15 minute session.</h2>
+          </div>
+          <p>
+            Each mode pulls from the saved profile so the session feels short,
+            focused, and personalized.
+          </p>
+        </div>
+        <StudyModes />
       </section>
 
       <section className="section-block split-layout reverse">
