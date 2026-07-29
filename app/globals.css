@@ -252,6 +252,10 @@ button {
   margin-top: 18px;
 }
 
+.heatmap-grid.compact {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
 .heatmap-cell,
 .card-panel {
   padding: 16px;
@@ -422,6 +426,11 @@ button {
 
 .mini-card h3 {
   margin: 0 0 8px;
+}
+
+.mini-stack {
+  display: grid;
+  gap: 12px;
 }
 
 .feature-banner p {

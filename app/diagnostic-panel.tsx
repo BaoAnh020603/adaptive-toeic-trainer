@@ -86,11 +86,19 @@ export function DiagnosticPanel() {
   }, [complete, missedCount, score, slowHits, step, weakAreas]);
 
   const current = questions[step];
-  const elapsedMs = useMemo(() => Date.now() - startedAt, [startedAt, step, selected]);
+  const elapsedMs = useMemo(
+    () => Date.now() - startedAt,
+    [startedAt, step, selected],
+  );
   const progress = useMemo(
     () => ((step + (complete ? 1 : 0)) / questions.length) * 100,
     [step, complete],
   );
+  const overthinkingIndex = useMemo(() => {
+    const attempts = score + missedCount;
+    if (!attempts) return 0;
+    return Math.min(100, Math.round((slowHits / attempts) * 100));
+  }, [missedCount, score, slowHits]);
 
   const handleChoice = (choice: number) => {
     if (selected !== null || complete) return;
@@ -141,7 +149,10 @@ export function DiagnosticPanel() {
           <h3>Your personal study profile is ready.</h3>
           <p>
             Score: {score}/{questions.length}. Slow hits: {slowHits}. Misses:{" "}
-            {missedCount}. The next quest would focus on{" "}
+            {missedCount}. Overthinking index: {overthinkingIndex}/100.
+          </p>
+          <p className="supporting">
+            Next quest focus:{" "}
             {(weakAreas.length ? weakAreas : ["speed recovery", "precision"]).join(", ")}.
           </p>
         </div>
@@ -162,7 +173,9 @@ export function DiagnosticPanel() {
             Weak area: {current.weakArea} · This question is helping build your profile.
           </p>
         </div>
-        <span>{step + 1}/{questions.length}</span>
+        <span>
+          {step + 1}/{questions.length}
+        </span>
       </div>
 
       <div className="bar-track diagnostic-track" aria-hidden="true">
