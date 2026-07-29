@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { AdaptiveSummary } from "./adaptive-summary";
 import { DiagnosticPanel } from "./diagnostic-panel";
+import { QuestPlayer } from "./quest-player";
 import { StudyModes } from "./study-modes";
 import { onboardingSteps, productPrinciples } from "../lib/product";
 
@@ -336,6 +337,17 @@ export default function Home() {
           </p>
         </div>
         <AdaptiveSummary />
+      </section>
+
+      <section className="section-block">
+        <div className="section-head">
+          <div>
+            <span className="eyebrow">Quest player</span>
+            <h2>Start a focused learning session right away.</h2>
+          </div>
+          <p>Pick a mode, preview the plan, and begin the exact quest you need next.</p>
+        </div>
+        <QuestPlayer />
       </section>
     </main>
   );

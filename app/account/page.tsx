@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { AccountSync } from "../account-sync";
 import { chatGPTSignInPath, getChatGPTUser } from "../chatgpt-auth";
 
 export const metadata: Metadata = {
@@ -68,6 +69,16 @@ export default async function AccountPage() {
             </div>
           </article>
         </div>
+      </section>
+
+      <section className="section-block">
+        <div className="section-head">
+          <div>
+            <span className="eyebrow">Backend-ready</span>
+            <h2>Export or import your learning state right now.</h2>
+          </div>
+        </div>
+        <AccountSync />
       </section>
     </main>
   );
